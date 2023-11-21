@@ -19,5 +19,11 @@ public class OpStackTest {
         Assertions.assertEquals(0, stack.size(), "A new stack should have size 0");
     }
     
+    @Test
+    public void sizeShouldIncreaseAfterPush() {
+        stack.push(new Entry(Symbol.PLUS)); // Use the PLUS symbol as an example
+        Assertions.assertEquals(1, stack.size(), "The stack should have size 1 after pushing one item");
+    }
+
 }
 

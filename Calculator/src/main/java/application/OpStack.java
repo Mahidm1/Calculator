@@ -1,15 +1,20 @@
 package application;
 
+import java.util.Stack;
+
 public class OpStack {
-  private Stack opStack;
+    private Stack<Entry> opStack;
 
-  public OpStack() {
-      opStack = new Stack();
+    public OpStack() {
+        opStack = new Stack<>();
+    }
+
+    public int size() {
+        return opStack.size();
+    }
+
+    public void push(Entry entry) {
+      opStack.push(entry);
   }
 
-  public int size() {
-      // Return 0 to indicate the stack is empty
-      return 0;
-  }
-  
 }
