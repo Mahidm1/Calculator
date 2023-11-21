@@ -22,7 +22,7 @@ public class OpStackTest {
 
   @Test
   public void sizeShouldIncreaseAfterPush() {
-    stack.push(new Entry(Symbol.PLUS)); // Use the PLUS symbol as an example
+    stack.push(new Entry(Symbol.PLUS));
     Assertions.assertEquals(1, stack.size(), "The stack should have size 1 after pushing one item");
   }
 
@@ -45,6 +45,24 @@ public class OpStackTest {
     }, "Popping from an empty stack should throw EmptyStackException");
   }
 
+  @Test
+  public void topShouldReturnCorrectEntryWithoutRemoving() {
+    Entry entry = new Entry(Symbol.PLUS);
+    stack.push(entry);
+    Assertions.assertEquals(1, stack.size(), "The stack should have size 1 after pushing one item");
+
+    Entry topEntry = stack.top();
+    Assertions.assertEquals(entry, topEntry, "The top entry should be the same as the pushed one");
+    Assertions.assertEquals(1, stack.size(),
+        "The stack size should remain the same after calling top()");
+  }
+
+  @Test
+  public void topOnEmptyStackShouldThrowException() {
+    Assertions.assertThrows(EmptyStackException.class, () -> {
+      stack.top();
+    }, "Calling top on an empty stack should throw EmptyStackException");
+  }
 }
 
 

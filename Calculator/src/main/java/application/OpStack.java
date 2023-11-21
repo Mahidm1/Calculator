@@ -24,4 +24,11 @@ public class OpStack {
     }
     return opStack.pop();
   }
+
+  public Entry top() {
+    if (opStack.isEmpty()) {
+      throw new EmptyStackException();
+    }
+    return opStack.peek();
+  }
 }
