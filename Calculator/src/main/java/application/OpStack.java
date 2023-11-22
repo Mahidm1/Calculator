@@ -1,20 +1,19 @@
 package application;
 
 import java.util.EmptyStackException;
-import java.util.Stack;
 
 /**
  * The OpStack class represents a stack data structure specifically for handling Entry objects. It
  * offers basic stack operations such as push, pop, and peek (top).
  */
 public class OpStack {
-  private Stack<Entry> opStack; // Stack to store Entry objects
+  private Stack opStack;
 
   /**
    * Constructor for OpStack. Initialises a new Stack.
    */
   public OpStack() {
-    opStack = new Stack<>();
+    opStack = new Stack();
   }
 
   /**
@@ -42,8 +41,8 @@ public class OpStack {
    * @throws EmptyStackException if the stack is empty.
    */
   public Entry pop() {
-    if (opStack.isEmpty()) {
-      throw new EmptyStackException(); // Throw exception if trying to pop from an empty stack
+    if (opStack.size() == 0) {
+      throw new EmptyStackException();
     }
     return opStack.pop();
   }
@@ -55,9 +54,9 @@ public class OpStack {
    * @throws EmptyStackException if the stack is empty.
    */
   public Entry top() {
-    if (opStack.isEmpty()) {
-      throw new EmptyStackException(); // Throw exception if trying to peek at an empty stack
+    if (opStack.size() == 0) {
+      throw new EmptyStackException();
     }
-    return opStack.peek();
+    return opStack.top();
   }
 }
