@@ -27,4 +27,10 @@ public class RevPolishCalcTest {
         "Should correctly evaluate subtraction");
   }
 
+  @Test
+  public void evaluateSimpleMultiplication() {
+    RevPolishCalc calc = new RevPolishCalc(new Stack());
+    Assertions.assertEquals(20.0f, calc.evaluate("5 4 *"), 0.001,
+        "Should correctly evaluate multiplication");
+  }
 }
