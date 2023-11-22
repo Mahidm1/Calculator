@@ -19,4 +19,12 @@ public class RevPolishCalcTest {
     Assertions.assertEquals(7.0f, calc.evaluate("3 4 +"), 0.001,
         "Should correctly evaluate addition");
   }
+
+  @Test
+  public void evaluateSimpleSubtraction() {
+    RevPolishCalc calc = new RevPolishCalc(new Stack());
+    Assertions.assertEquals(1.0f, calc.evaluate("5 4 -"), 0.001,
+        "Should correctly evaluate subtraction");
+  }
+
 }
