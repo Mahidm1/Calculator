@@ -25,6 +25,9 @@ public class RevPolishCalc {
           case "*":
             stack.push(new Entry(firstOperand * secondOperand));
             break;
+          case "/":
+            stack.push(new Entry(firstOperand / secondOperand));
+            break;
         }
       }
     }
