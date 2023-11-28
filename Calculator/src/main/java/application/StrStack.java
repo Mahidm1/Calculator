@@ -10,4 +10,9 @@ public class StrStack {
   public int size() {
     return this.stack.size();
   }
+
+  public void push(String item) {
+    this.stack.push(new Entry(item));
+  }
+
 }
