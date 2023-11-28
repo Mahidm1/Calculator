@@ -24,4 +24,11 @@ public class StrStack {
     return this.stack.pop().getString();
   }
 
+  public String top() {
+    if (this.stack.size() == 0) {
+      throw new EmptyStackException();
+    }
+    return this.stack.top().getString();
+  }
+
 }

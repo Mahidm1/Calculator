@@ -37,4 +37,22 @@ public class StrStackTest {
       stack.pop();
     }, "Popping from an empty stack should throw EmptyStackException");
   }
+
+  @Test
+  public void testTop() {
+    StrStack stack = new StrStack();
+    stack.push("Mount");
+    stack.push("Everest");
+    String topItem = stack.top();
+    Assertions.assertEquals("Everest", topItem, "The top item should be 'Everest'");
+    Assertions.assertEquals(2, stack.size(), "The stack size should remain 2 after calling top");
+  }
+
+  @Test
+  public void testTopEmptyStackThrowsException() {
+    StrStack stack = new StrStack();
+    Assertions.assertThrows(EmptyStackException.class, stack::top,
+        "Calling top on an empty stack should throw EmptyStackException");
+  }
+
 }
