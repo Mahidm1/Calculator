@@ -4,15 +4,13 @@ package application;
  * This class provides functionality to evaluate expressions written in reverse Polish notation.
  */
 public class RevPolishCalc {
-  private Stack stack;
+  private NumStack numStack;
 
   /**
-   * Constructs a RevPolishCalc with a given stack.
-   * 
-   * @param stack The stack used for evaluating expressions.
+   * Constructs a RevPolishCalc with a given NumStack.
    */
-  public RevPolishCalc(Stack stack) {
-    this.stack = stack;
+  public RevPolishCalc() {
+    this.numStack = new NumStack();
   }
 
   /**
@@ -27,32 +25,32 @@ public class RevPolishCalc {
     for (String token : tokens) {
       // Handle numbers
       if (token.matches("-?\\d+(\\.\\d+)?")) {
-        stack.push(new Entry(Float.parseFloat(token)));
+        numStack.push(Float.parseFloat(token));
       } else {
         // Check if there are enough operands on the stack
-        if (stack.size() < 2) {
+        if (numStack.size() < 2) {
           throw new InvalidExpression(
               "Malformed expression: insufficient operands for operator " + token);
         }
 
         // Pop operands and perform the operation
-        float secondOperand = stack.pop().getValue();
-        float firstOperand = stack.pop().getValue();
+        float secondOperand = numStack.pop();
+        float firstOperand = numStack.pop();
         switch (token) {
           case "+":
-            stack.push(new Entry(firstOperand + secondOperand));
+            numStack.push(firstOperand + secondOperand);
             break;
           case "-":
-            stack.push(new Entry(firstOperand - secondOperand));
+            numStack.push(firstOperand - secondOperand);
             break;
           case "*":
-            stack.push(new Entry(firstOperand * secondOperand));
+            numStack.push(firstOperand * secondOperand);
             break;
           case "/":
             if (secondOperand == 0) {
               throw new InvalidExpression("Division by zero");
             }
-            stack.push(new Entry(firstOperand / secondOperand));
+            numStack.push(firstOperand / secondOperand);
             break;
           default:
             throw new InvalidExpression("Unknown operator: " + token);
@@ -61,10 +59,10 @@ public class RevPolishCalc {
     }
 
     // Check for malformed expressions
-    if (stack.size() != 1) {
+    if (numStack.size() != 1) {
       throw new InvalidExpression("Malformed expression: too many operands");
     }
 
-    return stack.pop().getValue();
+    return numStack.pop();
   }
 }
