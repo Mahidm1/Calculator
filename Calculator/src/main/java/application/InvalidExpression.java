@@ -6,7 +6,6 @@ package application;
 
 public class InvalidExpression extends Exception {
 
-  public InvalidExpression(String string) {
-      }
+  public InvalidExpression(String string) {}
 
 }

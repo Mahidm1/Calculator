@@ -52,14 +52,16 @@ public class StandardCalc {
         while (!operator.isEmpty() && operator.peek() != '(') {
           output.append(' ').append(operator.pop());
         }
-        if (!operator.isEmpty() && operator.peek() != '(')
+        if (!operator.isEmpty() && operator.peek() != '(') {
           throw new InvalidExpression("Invalid Expression");
-        else
+        } else {
           operator.pop();
+        }
       } else if (isOperator(c)) {
         while (!operator.isEmpty() && precedence(c) <= precedence(operator.peek())) {
-          if (operator.peek() == '(')
+          if (operator.peek() == '(') {
             throw new InvalidExpression("Invalid Expression");
+          }
           output.append(' ').append(operator.pop());
         }
         output.append(' ');
